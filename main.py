@@ -36,6 +36,8 @@ class Main(MDApp):
     
     def buttom_callback(self, Type):
         match Type:
+            case 'OFF':
+                pass
             case 'DIODE':
                 self.graph.clear()
             case 'MN':
