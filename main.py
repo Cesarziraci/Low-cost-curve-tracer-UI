@@ -6,6 +6,8 @@ from utils import Data
 from UI.dialogs import CustomDialog
 from Serial_communication.Serial_port import get, write, ser
 import threading
+from kivy.core.window import Window
+Window.size = (1100, 700)
 
 x = threading.Thread(target=get, args=(1,))
 
@@ -15,7 +17,6 @@ class Main(MDApp):
         self.sm = UI()
         self.graph = RealTimeGraph(title='Characteristic curve', xlabel='V', ylabel='A')
          
-
     def on_start(self):
         graph_box = self.sm.current_screen.ids.graph_box
         graph_box.add_widget(self.graph.set_graph(0.35))
