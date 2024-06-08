@@ -1,6 +1,5 @@
 import serial
 from utils.constants import Data,port, baudrate
-from UI.dialogs import CustomDialog
 
 ser = serial.Serial(port = port, baudrate= baudrate)
 

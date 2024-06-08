@@ -3,7 +3,7 @@ from UI.screen import UI
 from utils import RealTimeGraph
 from kivy.clock import Clock
 from utils import Data
-import random
+from UI.dialogs import CustomDialog
 from Serial_communication.Serial_port import get, write, ser
 import threading
 
@@ -14,6 +14,7 @@ class Main(MDApp):
         super().__init__(**kwargs)
         self.sm = UI()
         self.graph = RealTimeGraph(title='Characteristic curve', xlabel='V', ylabel='A')
+         
 
     def on_start(self):
         graph_box = self.sm.current_screen.ids.graph_box
@@ -50,27 +51,35 @@ class Main(MDApp):
         match Type:
             case 'OFF':
                 write('OFF')
+                CustomDialog('Set', 'Setting Off').open()
             case 'DIODE':
                 self.graph.clear()
+                CustomDialog('Set', 'Characterizing diode').open()
                 write('ENCENDIDO;DIODE')
             case 'MN':
                 self.graph.clear()
+                CustomDialog('Set', 'Characterizing Mosfet-N').open()
                 write('ENCENDIDO;NMOS')
             case 'MP':
                 self.graph.clear()
                 write('ENCENDIDO;PMOS')
+                CustomDialog('Set', 'Characterizing Mosfet-P').open()
             case 'BP':
                 self.graph.clear()
                 write('ENCENDIDO;BJTP')
+                CustomDialog('Set', 'Characterizing BJT-p').open()
             case 'BN':
                 self.graph.clear()
                 write('ENCENDIDO;BJTN')
+                CustomDialog('Set', 'Characterizing BJT-N').open()
             case 'JP':
                 self.graph.clear()
                 write('ENCENDIDO;PFET')
+                CustomDialog('Set', 'Characterizing JFET-P').open()
             case 'JN':
                 self.graph.clear()
                 write('ENCENDIDO;NFET')
+                CustomDialog('Set', 'Characterizing JFET-N').open()
         
 if __name__ == '__main__':
     Main().run() 
