@@ -1,0 +1,27 @@
+<Header@MDBoxlayout>:
+    orientation: 'vertical'
+    text: ''
+
+    MDBoxlayout:
+        orientation: 'horizontal'
+        size_hint: 1, .15
+        padding:'10dp'
+        Image:
+            source: 'icons\logoUZ.png'
+            size: self.texture_size
+            pos_hint: {"center_y": 0.5}
+            padding: "10dp"
+
+        MDLabel:
+            text: f'[color=#1976D2][b][size=45]{root.text}[/size][/b][/color]'
+            markup: True
+            halign: 'center'
+
+
+<Principal_Screen@MDScreen>:
+    Header:
+        text: 'Curve Trazer'
+        
+
+<UI>:
+    id: screen_manager
