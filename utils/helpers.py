@@ -1,5 +1,4 @@
 from kivy_garden.matplotlib.backend_kivyagg import FigureCanvasKivyAgg
-import numpy as np
 import matplotlib.pyplot as plt
 from utils.constants import Data
 
