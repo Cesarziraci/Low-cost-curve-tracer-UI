@@ -23,6 +23,13 @@
             orientation: 'horizontal'
 
             MDNavigationRail:
+
+                MDNavigationRailItem:  
+                    text: "OFF"
+                    md_bg_color: "lightsteelblue"
+                    on_release:
+                        app.buttom_callback('OFF')
+                        
                 MDNavigationRailItem:
                     text: "DIODE"
                     md_bg_color: "lightsteelblue"
@@ -64,12 +71,6 @@
                     md_bg_color: "lightsteelblue"
                     on_release:
                         app.buttom_callback('JP')
-
-                MDNavigationRailItem:  
-                    text: "OFF"
-                    md_bg_color: "lightsteelblue"
-                    on_release:
-                        app.buttom_callback('OFF')
 
 
             MDBoxLayout:

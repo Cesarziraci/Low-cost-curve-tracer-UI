@@ -7,7 +7,7 @@ from UI.dialogs import CustomDialog
 from Serial_communication.Serial_port import get, write, ser
 import threading
 from kivy.core.window import Window
-Window.size = (1100, 700)
+Window.size = (1100, 750)
 
 x = threading.Thread(target=get, args=(1,))
 
