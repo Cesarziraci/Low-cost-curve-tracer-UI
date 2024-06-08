@@ -4,6 +4,10 @@ from utils import RealTimeGraph
 from kivy.clock import Clock
 from utils import Data
 import random
+from Serial_communication.Serial_port import get, write, ser
+import threading
+
+x = threading.Thread(target=get, args=(1,))
 
 class Main(MDApp):
     def __init__(self, **kwargs):
@@ -17,14 +21,22 @@ class Main(MDApp):
         Clock.schedule_interval(self.update_graph, 0.1)
         return super().on_start()
 
+    def on_stop(self):
+        ser.close()
+        return super().on_stop()
+
     def update_graph(self, dt):
-        Data.Current.append(random.uniform(0, 10))
-        Data.Voltage.append(random.uniform(5, 10))
         self.graph.update(Data.Voltage, Data.Current)
 
-        average_current = sum(Data.Current) / len(Data.Current)
-        average_voltage = sum(Data.Voltage) / len(Data.Voltage)
-        beta = average_current/Data.beta
+        try:
+            average_current = sum(Data.Current) / len(Data.Current)
+            average_voltage = sum(Data.Voltage) / len(Data.Voltage)
+            beta = average_current/Data.beta
+        except Exception:
+            average_current = 0
+            average_voltage = 0
+            beta = 0
+
         self.sm.current_screen.ids.label_2.text = str(average_current)
         self.sm.current_screen.ids.label_4.text = str(average_voltage)
         self.sm.current_screen.ids.label_6.text = str(beta)
@@ -37,21 +49,29 @@ class Main(MDApp):
     def buttom_callback(self, Type):
         match Type:
             case 'OFF':
-                pass
+                write('OFF')
             case 'DIODE':
                 self.graph.clear()
+                write('ENCENDIDO;DIODE')
             case 'MN':
                 self.graph.clear()
+                write('ENCENDIDO;NMOS')
             case 'MP':
                 self.graph.clear()
+                write('ENCENDIDO;PMOS')
             case 'BP':
                 self.graph.clear()
+                write('ENCENDIDO;BJTP')
             case 'BN':
                 self.graph.clear()
+                write('ENCENDIDO;BJTN')
             case 'JP':
                 self.graph.clear()
+                write('ENCENDIDO;PFET')
             case 'JN':
                 self.graph.clear()
+                write('ENCENDIDO;NFET')
         
 if __name__ == '__main__':
-    Main().run()
+    Main().run() 
+    x.start()

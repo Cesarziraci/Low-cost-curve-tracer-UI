@@ -1,5 +1,5 @@
 baudrate = 115200
-port = 'COM8'
+port = 'COM3'
 
 class Data: 
     Current = []
