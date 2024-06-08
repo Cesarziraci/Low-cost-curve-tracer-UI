@@ -14,17 +14,20 @@ class Main(MDApp):
     def on_start(self):
         graph_box = self.sm.current_screen.ids.graph_box
         graph_box.add_widget(self.graph.set_graph(0.35))
-        Clock.schedule_interval(self.update_graph, 0.01)
+        Clock.schedule_interval(self.update_graph, 0.1)
         return super().on_start()
 
     def update_graph(self, dt):
-        Data.Current = random.uniform(0, 10)
-        Data.Voltage = random.uniform(5, 10)
+        Data.Current.append(random.uniform(0, 10))
+        Data.Voltage.append(random.uniform(5, 10))
         self.graph.update(Data.Voltage, Data.Current)
 
-        self.sm.current_screen.ids.label_2.text = str(Data.Voltage)
-        self.sm.current_screen.ids.label_4.text = str(Data.Current)
-        self.sm.current_screen.ids.label_6.text = '12'
+        average_current = sum(Data.Current) / len(Data.Current)
+        average_voltage = sum(Data.Voltage) / len(Data.Voltage)
+        beta = average_current/Data.beta
+        self.sm.current_screen.ids.label_2.text = str(average_current)
+        self.sm.current_screen.ids.label_4.text = str(average_voltage)
+        self.sm.current_screen.ids.label_6.text = str(beta)
 
     def build(self):
         self.theme_cls.theme_style = "Light"

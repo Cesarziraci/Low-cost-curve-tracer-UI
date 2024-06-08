@@ -1,3 +1,7 @@
+baudrate = 115200
+port = 'COM8'
+
 class Data: 
-    Current = 0
-    Voltage = 0
+    Current = []
+    Voltage = []
+    beta = 2

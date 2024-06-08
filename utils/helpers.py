@@ -1,6 +1,7 @@
 from kivy_garden.matplotlib.backend_kivyagg import FigureCanvasKivyAgg
 import numpy as np
 import matplotlib.pyplot as plt
+from utils.constants import Data
 
 class RealTimeGraph:
     def __init__(self,title,xlabel,ylabel, **kwargs):
@@ -32,5 +33,10 @@ class RealTimeGraph:
         self.canvas.draw()
 
     def clear(self):
+        Data.Current = []
+        Data.Voltage = []
         self.data_x = []
         self.data_y = []
+        self.line.set_xdata([])
+        self.line.set_ydata([])
+        self.canvas.draw()
