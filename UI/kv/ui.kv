@@ -1,27 +1,106 @@
-<Header@MDBoxlayout>:
+<Header@MDBoxLayout>:
     orientation: 'vertical'
-    text: ''
 
-    MDBoxlayout:
+    MDBoxLayout:
         orientation: 'horizontal'
-        size_hint: 1, .15
+        size_hint: 1, .2
         padding:'10dp'
         Image:
-            source: 'icons\logoUZ.png'
+            source: 'icons/logoUZ.png'
             size: self.texture_size
             pos_hint: {"center_y": 0.5}
             padding: "10dp"
 
         MDLabel:
-            text: f'[color=#1976D2][b][size=45]{root.text}[/size][/b][/color]'
+            text: '[color=#1976D2][b][size=45]Curve Trazer[/size][/b][/color]'
             markup: True
             halign: 'center'
 
-
 <Principal_Screen@MDScreen>:
     Header:
-        text: 'Curve Trazer'
-        
+
+        MDBoxLayout:
+            orientation: 'horizontal'
+
+            MDNavigationRail:
+                MDNavigationRailItem:
+                    text: "DIODE"
+                    md_bg_color: "lightsteelblue"
+                    on_release:
+                        app.buttom_callback('DIODE')
+                MDNavigationRailItem:
+                    text: "MOSFET N"
+                    md_bg_color: "lightsteelblue"
+                    on_release:
+                        app.buttom_callback('MN')
+                MDNavigationRailItem:
+                    text: "MOSFET P"
+                    md_bg_color: "lightsteelblue"
+                    on_release:
+                        app.buttom_callback('MP')
+                MDNavigationRailItem:
+                    text: "BJT N"
+                    md_bg_color: "lightsteelblue"
+                    on_release:
+                        app.buttom_callback('BN')
+                MDNavigationRailItem:
+                    text: "BJT P"
+                    md_bg_color: "lightsteelblue"
+                    on_release:
+                        app.buttom_callback('BP')
+                MDNavigationRailItem: 
+                    text: "JFET N"
+                    md_bg_color: "lightsteelblue"
+                    on_release:
+                        app.buttom_callback('JN')
+                MDNavigationRailItem:  
+                    text: "JFET P"
+                    md_bg_color: "lightsteelblue"
+                    on_release:
+                        app.buttom_callback('JP')
+                MDNavigationRailItem:  
+                    text: "OFF"
+                    md_bg_color: "lightsteelblue"
+                    on_release:
+                        app.buttom_callback('OFF')
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                size_hint: 0.8, 1
+                padding: '20dp'
+
+                MDBoxLayout:
+                    id: graph_box
+                    orientation: 'vertical'
+                    size_hint: 1, 0.9
+
+                MDGridLayout:
+                    cols: 6
+                    size_hint: 1, 0.1
+                    pos_hint: {"center_x": 0.5}
+                    spacing: "10dp"
+                    MDLabel:
+                        text: "Average Voltage: "
+                        halign: 'right'
+                        bold: True
+                    MDLabel:
+                        text: "Label 2"
+                        halign: 'left'
+                    MDLabel:
+                        text: "Average Current: "
+                        halign: 'right'
+                        bold: True
+                    MDLabel:
+                        text: "Label 4"
+                        halign: 'left'
+                    MDLabel:
+                        text: "β: "
+                        halign: 'right'
+                        bold: True
+                    MDLabel:
+                        text: "Label 6"
+                        halign: 'left'
 
 <UI>:
     id: screen_manager
+    Principal_Screen:
