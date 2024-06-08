@@ -28,41 +28,43 @@
                     md_bg_color: "lightsteelblue"
                     on_release:
                         app.buttom_callback('DIODE')
+                        
                 MDNavigationRailItem:
                     text: "MOSFET N"
                     md_bg_color: "lightsteelblue"
                     on_release:
                         app.buttom_callback('MN')
+
                 MDNavigationRailItem:
                     text: "MOSFET P"
                     md_bg_color: "lightsteelblue"
                     on_release:
                         app.buttom_callback('MP')
+
                 MDNavigationRailItem:
                     text: "BJT N"
                     md_bg_color: "lightsteelblue"
                     on_release:
                         app.buttom_callback('BN')
+
                 MDNavigationRailItem:
                     text: "BJT P"
                     md_bg_color: "lightsteelblue"
                     on_release:
                         app.buttom_callback('BP')
+
                 MDNavigationRailItem: 
                     text: "JFET N"
                     md_bg_color: "lightsteelblue"
                     on_release:
                         app.buttom_callback('JN')
+
                 MDNavigationRailItem:  
                     text: "JFET P"
                     md_bg_color: "lightsteelblue"
                     on_release:
                         app.buttom_callback('JP')
-                MDNavigationRailItem:  
-                    text: "OFF"
-                    md_bg_color: "lightsteelblue"
-                    on_release:
-                        app.buttom_callback('OFF')
+
 
             MDBoxLayout:
                 orientation: 'vertical'
@@ -72,8 +74,9 @@
                 MDBoxLayout:
                     id: graph_box
                     orientation: 'vertical'
-                    size_hint: 1, 0.9
-
+                    size_hint: 1, 1  
+                    padding: '20dp'
+                
                 MDGridLayout:
                     cols: 6
                     size_hint: 1, 0.1
@@ -84,6 +87,7 @@
                         halign: 'right'
                         bold: True
                     MDLabel:
+                        id: label_2
                         text: "Label 2"
                         halign: 'left'
                     MDLabel:
@@ -91,6 +95,7 @@
                         halign: 'right'
                         bold: True
                     MDLabel:
+                        id: label_4
                         text: "Label 4"
                         halign: 'left'
                     MDLabel:
@@ -98,9 +103,11 @@
                         halign: 'right'
                         bold: True
                     MDLabel:
+                        id: label_6
                         text: "Label 6"
                         halign: 'left'
 
 <UI>:
     id: screen_manager
     Principal_Screen:
+        name: 'principal_screen'
