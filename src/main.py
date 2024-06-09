@@ -46,6 +46,7 @@ class Main(MDApp):
     def build(self):
         self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "LightBlue"
+        self.title = 'Curve Trazer'
         return self.sm
     
     def button_callback(self, Type):
