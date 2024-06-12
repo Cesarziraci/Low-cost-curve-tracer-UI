@@ -4,7 +4,7 @@ from utils import RealTimeGraph
 from kivy.clock import Clock
 from utils import Data
 from UI.dialogs import CustomDialog
-from Serial_communication.Serial_port import get, write, ser
+#from Serial_communication.Serial_port import get, write, ser
 import threading
 
 class Main(MDApp):
@@ -12,20 +12,20 @@ class Main(MDApp):
         super().__init__(**kwargs)
         self.sm = UI()
         self.graph = RealTimeGraph(title='Characteristic curve', xlabel='V', ylabel='A')
-        self.read_thread = threading.Thread(target=get, daemon=True)
+        #self.read_thread = threading.Thread(target=get, daemon=True)
         self.update_event = None
          
     def on_start(self):
         graph_box = self.sm.current_screen.ids.graph_box
         graph_box.add_widget(self.graph.set_graph(0.35))
-        if not self.read_thread.is_alive():
-            pass
+        #if not self.read_thread.is_alive():
+            #pass
             #self.read_thread.start()
         return super().on_start()
 
     def on_stop(self):
-        if ser.is_open:
-            ser.close()
+        #if ser.is_open:
+            #ser.close()
         return super().on_stop()
 
     def update_graph(self, dt):
@@ -52,7 +52,7 @@ class Main(MDApp):
     
     def button_callback(self, Type):
         if Type == 'OFF':
-            write('OFF')
+            #write('OFF')
             CustomDialog('Set', 'Setting Off').open()
             if self.update_event:
                 Clock.unschedule(self.update_event)
@@ -66,25 +66,25 @@ class Main(MDApp):
             match Type:
                 case 'DIODE':
                     CustomDialog('Set', 'Characterizing diode').open()
-                    write('ENCENDIDO;DIODE')
+                    #write('ENCENDIDO;DIODE')
                 case 'MN':
                     CustomDialog('Set', 'Characterizing Mosfet-N').open()
-                    write('ENCENDIDO;NMOS')
+                    #write('ENCENDIDO;NMOS')
                 case 'MP':
                     CustomDialog('Set', 'Characterizing Mosfet-P').open()
-                    write('ENCENDIDO;PMOS')
+                    #write('ENCENDIDO;PMOS')
                 case 'BP':
                     CustomDialog('Set', 'Characterizing BJT-p').open()
-                    write('ENCENDIDO;BJTP')
+                    #write('ENCENDIDO;BJTP')
                 case 'BN':
                     CustomDialog('Set', 'Characterizing BJT-N').open()
-                    write('ENCENDIDO;BJTN')
+                    #write('ENCENDIDO;BJTN')
                 case 'JP':
                     CustomDialog('Set', 'Characterizing JFET-P').open()
-                    write('ENCENDIDO;PFET')
+                    #write('ENCENDIDO;PFET')
                 case 'JN':
                     CustomDialog('Set', 'Characterizing JFET-N').open()
-                    write('ENCENDIDO;NFET')
+                    #write('ENCENDIDO;NFET')
         
 if __name__ == '__main__':
     Main().run() 
