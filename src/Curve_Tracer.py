@@ -19,7 +19,8 @@ class Main(MDApp):
         graph_box = self.sm.current_screen.ids.graph_box
         graph_box.add_widget(self.graph.set_graph(0.35))
         if not self.read_thread.is_alive():
-            self.read_thread.start()
+            pass
+            #self.read_thread.start()
         return super().on_start()
 
     def on_stop(self):
