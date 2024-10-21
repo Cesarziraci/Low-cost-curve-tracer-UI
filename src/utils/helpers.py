@@ -11,7 +11,7 @@ class RealTimeGraph:
         self.ax.set_ylabel(ylabel, size = 12, rotation = 90)
         self.data_x = []
         self.data_y = []
-        self.buffer_size = 250
+        self.buffer_size = 1000
         self.line, = self.ax.plot([], [], 'ro', markersize=4) 
         self.canvas = FigureCanvasKivyAgg(self.fig, size_hint=(1,1))
 
@@ -34,8 +34,8 @@ class RealTimeGraph:
         self.line.set_ydata(self.data_y)
 
         # Ajustar los límites del gráfico
-        self.ax.set_ylim(0,30)
-        self.ax.set_xlim(0,4)
+        self.ax.set_ylim(0,15)
+        self.ax.set_xlim(0,2.5)
 
         # Redibujar el gráfico
         self.canvas.draw()

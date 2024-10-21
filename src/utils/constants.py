@@ -4,4 +4,4 @@ port = 'COM3'
 class Data: 
     Current = []
     Voltage = []
-    beta = 2
+    beta = 0

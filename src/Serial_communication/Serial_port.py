@@ -15,8 +15,8 @@ def get():
             y_index = data.find(',Y= ') + 4
             b_index = data.find(',B= ') + 4
 
-            x_value = float(data[x_index:x_index + 5]) 
-            y_value = float(data[y_index:y_index + 7])
+            x_value = float(data[x_index:x_index + 4]) 
+            y_value = float(data[y_index:y_index + 5])
             b_value = float(data[b_index:b_index + 6])
 
             Data.Voltage.append(x_value)

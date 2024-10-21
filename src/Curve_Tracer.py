@@ -35,7 +35,7 @@ class Main(MDApp):
         try:
             average_current = sum(current) / len(Data.Current)
             average_voltage = sum(voltage) / len (Data.Voltage)
-            beta = average_current*0.01/Data.beta
+            beta = average_current*1000/Data.beta
         except Exception:
             average_current = 0
             average_voltage = 0
